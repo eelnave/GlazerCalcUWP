@@ -26,5 +26,40 @@ namespace GlazerCalcUWP
         {
             this.InitializeComponent();
         }
+
+        private void slider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+        {
+            sliderResultBox.Text = slider.Value.ToString();
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            double width, height, woodLength, glassArea;
+            width = double.Parse(widthBox.Text);
+            height = double.Parse(heightBox.Text);
+            woodLength = 2 * (width + height) * 3.25;
+            glassArea = 2 * (width + height);
+
+            woodLengthResult.Text = woodLength.ToString();
+            glassAreaResult.Text = glassArea.ToString();
+        }
+
+        private void widthBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            double result;
+            if (!double.TryParse(widthBox.Text, out result))
+            {
+                widthBox.Text = String.Empty;
+            }
+        }
+
+        private void heightBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            double result;
+            if (!double.TryParse(heightBox.Text, out result))
+            {
+                heightBox.Text = String.Empty;
+            }
+        }
     }
 }
